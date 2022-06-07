@@ -29,7 +29,6 @@ _log() {
 
 _stop() {
     /etc/init.d/postfix stop
-    /etc/init.d/rsyslog stop
     if [ -f /var/run/dovecot/master.pid ]; then
         kill -15 $(cat /var/run/dovecot/master.pid)
         rm -rf /var/run/dovecot/master.pid
@@ -95,7 +94,7 @@ if [ -n "$HOSTNAME" ]; then
     /usr/sbin/postconf -e myhostname=$HOSTNAME
 fi
 
-routes=$(ip route | grep -v default | cut -d' ' -f1)
+routes=$(ip route | grep -v default | cut -d' ' -f1 | tr '\n' ' ')
 if [ -n "$routes" ]; then
     /usr/sbin/postconf -e mynetworks="127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 $routes"
     /usr/sbin/postconf -e inet_interfaces=all
@@ -136,9 +135,6 @@ sed -i -e 's/^.*postmaster_address.*/  postmaster_address = '${POSTMASTER_ADDRES
 
 
 _log "Docker entrypoint configured"
-
-# Start syslog daemon
-/etc/init.d/rsyslog start
 
 # Start Postfix daemon
 /etc/init.d/postfix start
