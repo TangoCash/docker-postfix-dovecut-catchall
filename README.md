@@ -1,4 +1,4 @@
-# Dockerized IMAP server#
+# Dockerized IMAP server
 
 IMAP server for debugging.
 
