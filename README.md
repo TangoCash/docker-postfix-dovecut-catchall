@@ -2,6 +2,12 @@
 
 IMAP server for debugging.
 
+Now built on Ubuntu 22.04, and on Docker Hub with linux/arm64 and linux/amd64 versions
+
+```bash
+docker buildx build --no-cache --platform linux/arm64,linux/amd64 --tag tabascoterrier/docker-imap-devel --push .
+```
+
 **IMPORTANT**: This image is **ONLY** for developing/debugging proposes
 
 This docker image is based on https://github.com/tomav/docker-mailserver
