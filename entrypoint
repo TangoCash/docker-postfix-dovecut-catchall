@@ -2,8 +2,9 @@
 
 set -e
 
+MAIL_ADDRESS="${MAIL_ALIAS}@${MAIL_DOMAIN}"
 MAIL_LOCATION='/var/mail'
-POSTMASTER_ADDRESS="postmaster@${MAILNAME}"
+POSTMASTER_ADDRESS="postmaster@${MAIL_DOMAIN}"
 HOSTNAME="$(hostname -f)"
 
 _add_line() {
@@ -79,11 +80,11 @@ _log "Docker entrypoint start"
 
 # Configuring Postfix
 
-if [ -n "$MAILNAME" ]; then
-    echo $MAILNAME > /etc/mailname;
-    /usr/sbin/postconf -e mydomain=$MAILNAME
-    if ! grep -q "$MAILNAME" /etc/postfix/vhost; then
-        echo "$MAILNAME" >> /etc/postfix/vhost
+if [ -n "$MAIL_DOMAIN" ]; then
+    echo $MAIL_DOMAIN > /etc/mailname;
+    /usr/sbin/postconf -e mydomain=$MAIL_DOMAIN
+    if ! grep -q "$MAIL_DOMAIN" /etc/postfix/vhost; then
+        echo "$MAIL_DOMAIN" >> /etc/postfix/vhost
     fi
     /usr/sbin/postconf -e smtp_helo_name=\$myhostname.\$mydomain
 fi
