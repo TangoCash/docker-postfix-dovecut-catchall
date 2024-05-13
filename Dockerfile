@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 
-ENV MAILNAME=localdomain.test \
-    MAIL_ADDRESS= \
+ENV MAIL_DOMAIN=localdomain.test \
+    MAIL_ALIAS= \
     MAIL_PASS= \
     MAIL_FS_USER=docker \
     MAIL_FS_HOME=/home/docker
