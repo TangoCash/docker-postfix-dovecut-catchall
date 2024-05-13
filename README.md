@@ -4,11 +4,9 @@ Mail server with one catchall account
 
 Built on Ubuntu 22.04
 
-This docker image is based on https://github.com/tomav/docker-mailserver
-If you look for a docker image for production environment, then go here:
-https://hub.docker.com/r/tvial/docker-mailserver/
+This docker image is based on https://github.com/tabascoterrier/docker-imap-devel
 
-This image is even simpler than `tvial` docker image. Includes only 
+This image is even simpler than `tabascoterrier` docker image. Includes only 
 Postfix (SMTP) and Dovecot (IMAP) servers with one catchall mailbox 
 
 Every email received via SMTP will be delivered locally to given mailaddress
