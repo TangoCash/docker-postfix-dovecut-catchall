@@ -5,11 +5,11 @@ services:
     # Uncomment this for build image in local
     # build:
     #   context: .
-    image: tangocash/docker-imap-devel:latest
+    image: tangocash/docker-postfix-dovecut-catchall:latest
     container_name: imap
     ports:
     - "25:25"
-    - "143:143"
+    #- "143:143" # optional
     - "993:993"
     environment:
     - MAIL_DOMAIN=example.org
