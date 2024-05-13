@@ -2,8 +2,6 @@
 
 set -e
 
-DEBUG_ADDRESS="debug@${MAILNAME}"
-DEBUG_PASS="debug"
 MAIL_LOCATION='/var/mail'
 POSTMASTER_ADDRESS="postmaster@${MAILNAME}"
 HOSTNAME="$(hostname -f)"
@@ -110,17 +108,11 @@ fi
 /usr/sbin/postconf -e virtual_mailbox_maps=hash:/etc/postfix/vmailbox
 /usr/sbin/postconf compatibility_level=2
 
-# Create user account
-if [ -n "$MAIL_ADDRESS" ]; then
-    _account_add "$MAIL_ADDRESS" "$MAIL_PASS"
-    _add_line "$MAIL_ADDRESS" "/$MAIL_ADDRESS/ $MAIL_ADDRESS" /etc/postfix/virtual_regexp
-fi
+# Create catchall account
+_account_add "$MAIL_ADDRESS" "$MAIL_PASS"
 
-# Create debug account
-_account_add "$DEBUG_ADDRESS" "$DEBUG_PASS"
-
-# Force to send all emails to debug email address, no email to outside
-_add_line "$DEBUG_ADDRESS" "/.+@.+/ $DEBUG_ADDRESS" /etc/postfix/virtual_regexp
+# Force to send all emails to catchall email address, no email to outside
+_add_line "$MAIL_ADDRESS" "/.+@.+/ $MAIL_ADDRESS" /etc/postfix/virtual_regexp
 
 /usr/sbin/postmap /etc/postfix/virtual_regexp
 /usr/sbin/postmap /etc/postfix/virtual
