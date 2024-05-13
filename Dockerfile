@@ -10,7 +10,7 @@ ENV MAIL_DOMAIN=localdomain.test \
 RUN set -x; \
     apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
-    && echo "postfix postfix/mailname string $MAILNAME" | debconf-set-selections \
+    && echo "postfix postfix/mailname string $MAIL_DOMAIN" | debconf-set-selections \
     && echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         postfix \
