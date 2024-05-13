@@ -1,8 +1,8 @@
-# Dockerized Postfix/Dovcut server
+# Dockerized Postfix/Dovecut server
 
-MAil server for catchall.
+Mail server with one catchall account
 
-Now built on Ubuntu 22.04
+Built on Ubuntu 22.04
 
 This docker image is based on https://github.com/tomav/docker-mailserver
 If you look for a docker image for production environment, then go here:
