@@ -18,14 +18,10 @@ Using your favorite email client you can connect via IMAP protocol to see emails
 
 ## Run container with docker compose
 
-```
-cp docker-compose.yml.dist docker-compose.yml
-```
-
 Edit ```docker-compose.yml``` for set these environment variables:
 
-- MAILNAME: Mail domain (by default, `localdomain.test`)
-- MAIL_ADDRESS: catchall user mailbox email address
+- MAIL_DOMAIN: Mail domain (by default, `localdomain.test`)
+- MAIL_ALIAS: catchall user mailbox email address (MAIL_ALIAS@MAIL_DOMAIN)
 - MAIL_PASS: catchall user mailbox password
 
 ```
@@ -41,7 +37,7 @@ any email to any email address
 - **IMAP server:** `imap`
 - **IMAP encryption:** `SSL`
 - **IMAP port:** `993`
-- **IMAP username:** `address@example.org` (change `address@example.org` by your `MAIL_ADDRESS`)
+- **IMAP username:** `address@example.org` (change `address@example.org` by your `MAIL_ALIAS@MAIL_DOMAIN`)
 - **IMAP password:** `pass` (change `pass` by your `MAIL_PASS`)
 
 - **SMTP server:** `imap`
