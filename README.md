@@ -1,6 +1,6 @@
-# Dockerized IMAP server
+# Dockerized Postfix/Dovcut server
 
-IMAP server for debugging.
+MAil server for catchall.
 
 Now built on Ubuntu 22.04
 
