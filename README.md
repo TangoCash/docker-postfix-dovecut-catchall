@@ -13,6 +13,11 @@ Every email received via SMTP will be delivered locally to given mailaddress
 
 Using your favorite email client you can connect via IMAP protocol to see emails like original recipient would received them
 
+## Build container with docker
+
+```
+docker build --no-cache --pull -t tangocash/docker-postfix-dovecut-catchall:latest .
+```
 
 ## Run container with docker compose
 
